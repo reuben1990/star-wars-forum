@@ -12,3 +12,7 @@ gem 'bb-ruby'
 group :development do
   gem 'hirb'
 end
+
+group :production do
+  gem 'unicorn'
+end
