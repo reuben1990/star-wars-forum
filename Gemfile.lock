@@ -43,13 +43,13 @@ GEM
     gravtastic (3.2.0)
     hirb (0.5.0)
     i18n (0.5.0)
+    kgio (2.4.1)
     mail (2.2.19)
       activesupport (>= 2.3.6)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.16)
-    nifty-generators (0.4.6)
     orm_adapter (0.0.5)
     polyglot (0.3.2)
     rack (1.2.3)
@@ -79,6 +79,9 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.29)
+    unicorn (3.6.2)
+      kgio (~> 2.3)
+      rack
     warden (1.0.5)
       rack (>= 1.0)
 
@@ -92,6 +95,6 @@ DEPENDENCIES
   forum_monster (~> 1.1)
   gravtastic
   hirb
-  nifty-generators
   rails (= 3.0.9)
   sqlite3
+  unicorn

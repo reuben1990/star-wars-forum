@@ -39,7 +39,7 @@ table a { font-weight:bold; }
 
 #header #menu_wrapper {
   width:100%;
-  background:url('http://www.stripemania.com/cache/3-2-45-1-020202-1-1A1A1A-DDEE1E-DDEE1E-DDEE1E-DDEE1E-272727-78D316-78D316-78D316-78D316-yes-yes-yes-yes-yes-.png');
+  background:url('/images/black_stripe.png');
 }
 
 #header #menu_wrapper ul {
@@ -66,7 +66,7 @@ table a { font-weight:bold; }
 }
 
 .module_header {
-  background:url('http://www.stripemania.com/cache/3-2-45-1-020202-1-1A1A1A-DDEE1E-DDEE1E-DDEE1E-DDEE1E-272727-78D316-78D316-78D316-78D316-yes-yes-yes-yes-yes-.png') !important;
+  background:url('/images/white_stripe.png') !important;
 }
 
 #info_box {

@@ -19,14 +19,14 @@
           <span class="info smaller">
             <p><strong><%= "Administrator" if post.user.admin? %></strong></p>
             Posts <%= post.user.posts.size %><br />
-            Registered <%= post.user.created_at.to_s(:joined) %><br />
+            Registered <%=l post.user.created_at, :format => :joined %><br />
           </span>
         </td>
         <td class="post_header">
-          <span class="left post_date smaller">Posted <%= post.created_at %></span>
+          <span class="left post_date smaller">Posted <%=l post.created_at %></span>
           <span class="right controls">
-            <%= link_to "Reply", new_topic_post_path(@topic) if can? :create, Topic %>
-            <%= link_to "Quote", new_topic_post_path(@topic, :quote => post) if can? :create, Topic %>
+            <%= link_to "Reply", new_topic_post_path(@topic) if can? :create, @topic.posts.new %>
+            <%= link_to "Quote", new_topic_post_path(@topic, :quote => post) if can? :create, @topic.posts.new %>
             <%= link_to "Edit", edit_post_path(post) if can? :update, post %>
             <%= link_to "Delete", post, :confirm => "Are you sure?", :method => :delete if can? :destroy, post %>
           </span>

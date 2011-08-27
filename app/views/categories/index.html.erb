@@ -30,7 +30,7 @@
           <td class="counts smaller"><%= forum.posts.size - forum.topics.size %></td>
           <td class="last_post smaller">
             <% if forum.posts.size > 0 %>
-              <%= forum.posts.last.created_at %><br />
+              <%=l forum.posts.last.created_at %><br />
               <%= forum.posts.last.user.username %>
             <% else %>
               No Topics / Posts
