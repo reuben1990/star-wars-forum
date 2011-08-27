@@ -27,7 +27,7 @@
     <% end %>
     <div class="module_footer">
       <div class="fieldset">
-        <span class="input"><%= f.submit "submit" %> or <%= link_to "cancel", @topic.nil? ?  @topic : @forum %></span>
+        <span class="input"><%= f.submit "submit" %> or <%= link_to "cancel", @topic.new_record? ?  @forum : @topic %></span>
         <div class="clear"></div>
       </div>
     </div>
