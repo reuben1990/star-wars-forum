@@ -7,7 +7,7 @@ class TopicsController < ApplicationController
   end
   
   def create
-    @topic.user = current_user
+    @topic.user ||= current_user
     
     if @topic.save
       flash[:notice] = "Topic was successfully created."
