@@ -1,0 +1,13 @@
+== Forum Monster Demo
+
+Demo for Forum Monster Forum Gem
+https://github.com/gitt/forum_monster
+
+Just download, bundle, and run.
+
+    git clone git@github.com:gitt/forum_monster_demo.git
+    
+    cd forum_monster_demo
+    bundle install
+    
+    rails s

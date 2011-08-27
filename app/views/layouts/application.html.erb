@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+    <%= stylesheet_link_tag "application", "forum-monster" %>
+    <%= javascript_include_tag :defaults %>
+    <%= csrf_meta_tag %>
+    <%= yield(:head) %>
+  </head>
+  <body>
+    <div class="container">
+      <%= content_tag :div, "This is just a demo, the database is reset every 24 hours.", :class => "demo_notice" %>
+    </div>
+    
+    <div id="header">
+      <div id="logo">
+        <%= image_tag "rails.png" %>
+        <h1>Forum Monster</h1>
+        A Ruby on Rails Forum Gem
+        <div class="clear"></div>
+      </div>
+      <div id="menu_wrapper">
+        <ul>
+          <li><%= link_to "Forum Index", root_path %></li>
+          <% if user_signed_in? %>
+            <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
+          <% else %>
+            <li><%= link_to "Login", new_user_session_path %></li>
+          <% end %>
+        </ul>
+      </div>
+      <div id="bottom">
+        <% if user_signed_in? %>
+          Welcome <strong><%= current_user.username %></strong>, your last login was <%= time_ago_in_words(current_user.last_sign_in_at) %> ago
+        <% else %>
+          You are not logged in. Please <%= link_to "login", new_user_session_path %> or <%= link_to "register", new_user_registration_path %>
+        <% end %>
+      </div>
+    </div>
+    
+    <div class="container">
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+      <% end %>
+      <%= yield %>
+    </div>
+    
+    <% if %w(categories forums topics posts).include? controller_name %>
+    <div id="info_box">
+      <p>
+        Total number of registered users: <strong><%= User.count %></strong><br />
+        Newest registered user: <%= link_to User.last.username %>
+      </p>
+    </div>
+    <% end %>
+  </body>
+</html>
