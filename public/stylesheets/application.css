@@ -71,7 +71,7 @@ table a { font-weight:bold; }
 
 #info_box {
   width:1024px;
-  margin:0 auto;
+  margin:5px auto;
   background:#fff;
   border:1px solid #e2e2e2;
 }

@@ -45,13 +45,12 @@
       <%= yield %>
     </div>
     
-    <% if %w(categories forums topics posts).include? controller_name %>
     <div id="info_box">
       <p>
         Total number of registered users: <strong><%= User.count %></strong><br />
-        Newest registered user: <%= link_to User.last.username %>
+        Newest registered user: <%= link_to User.last.username unless User.last.nil? %>
       </p>
     </div>
-    <% end %>
+
   </body>
 </html>

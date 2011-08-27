@@ -16,6 +16,6 @@ class User < ActiveRecord::Base
   has_many :posts, :dependent => :destroy
   
   def admin?
-    true if self.username == 'codezombie'
+    true if self.username == 'admin'
   end
 end

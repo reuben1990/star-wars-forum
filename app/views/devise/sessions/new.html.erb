@@ -1,17 +1,38 @@
-<h2>Sign in</h2>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.2.min.js"></script>
+<script type="text/javascript">
+  $().ready(function() {
+    $('#user_username, #user_password').click(function() {
+      $(this).val('');
+    });
+    
+    $('#user_username, #user_password').blur(function() {
+      if ( $(this).val() == '' ) {
+        if ( $(this).is('#user_username') ) {
+          $(this).val('username');
+        }else{
+          $(this).val('password');
+        }
+      }
+    });
+  });
+</script>
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <p><%= f.label :email %><br />
-  <%= f.email_field :email %></p>
-
-  <p><%= f.label :password %><br />
-  <%= f.password_field :password %></p>
-
-  <% if devise_mapping.rememberable? -%>
-    <p><%= f.check_box :remember_me %> <%= f.label :remember_me %></p>
-  <% end -%>
-
-  <p><%= f.submit "Sign in" %></p>
-<% end %>
-
-<%= render :partial => "devise/shared/links" %>
+<div class="module" style="padding:15px 25px 0px 25px;">
+  <div style="float:left; width:50%; height:210px; padding-right:10px;">
+    <h1>Welcome to Forum Monster</h1>
+    <p>
+      Forum Monster is a simple forum generator written in rails 3. The goal of Forum Monster, is to provide a simple, and easy to setup forum application without having to dictate how your site it setup.
+      <p>You can login with the following information:</p>
+      <p><strong>Admin Demo:</strong> admin/forum_admin</p>
+      <p><strong>User Demo:</strong> user/forum_user</p>
+    </p>
+  </div>
+  <div style="float:right; width:45%; height:195px; padding-left:30px; border-left:1px solid #e2e2e2;">
+    <%= form_for("user", :url => user_session_path) do |f| %>
+      <p><%= f.text_field :username , :value => "username", :style => "font-size:2.2em;" %></p>
+      <p><%= f.password_field :password, :value => "password", :style => "font-size:2.2em" %></p>
+      <%= f.submit 'Sign in' %>
+    <% end %>
+  </div>
+  <div class="clear"></div>
+</div>
