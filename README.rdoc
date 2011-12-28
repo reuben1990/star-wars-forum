@@ -4,7 +4,7 @@ Demo for Forum Monster Forum Gem
 https://github.com/gitt/forum_monster
 
 Live demo available here
-http://forum_monster.dev.codezombie.org/
+http://forum-monster.heroku.com
 
 This demo is setup for you to play around with, and get an idea on how you can use Forum Monster. This demo includes a lot of extra functionality that doesn't come with Forum Monster by default.
 
