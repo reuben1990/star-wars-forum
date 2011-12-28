@@ -99,7 +99,7 @@ table a { font-weight:bold; }
 	margin:10px 0;
   background-color: #cee6f2;
   border: solid 1px #058dc7;
-  background-image:url('http://hivecms.dev.codezombie.org/images/chromatron/icons/icon_notification_information.png');
+  background-image:url('/images/icon_notification_information.png');
 }
 
 #flash_notice, #flash_error, #flash_alert {
@@ -118,13 +118,13 @@ table a { font-weight:bold; }
 
 #flash_notice {
   background-color:#d9e6c3;
-	background-image:url('http://hivecms.dev.codezombie.org/images/chromatron/icons/icon_notification_success.png');
+	background-image:url('/images/icon_notification_success.png');
 	border-color:#77ab13;
 }
 
 #flash_error, #flash_alert {
   background-color:#f2d4ce;
-	background-image:url('http://hivecms.dev.codezombie.org/images/chromatron/icons/icon_notification_error.png');
+	background-image:url('/images/icon_notification_error.png');
 	border-color:#ae432e;
 }
 
