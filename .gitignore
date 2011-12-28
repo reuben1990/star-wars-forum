@@ -3,3 +3,11 @@ db/*.sqlite3
 log/*.log
 tmp/
 .DS_Store
+._*
+.redcar
+.rvmrc*
+config/database.yml
+*.swp
+config/dev
+public/assets
+public/uploads
