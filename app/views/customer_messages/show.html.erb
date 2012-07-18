@@ -1,0 +1,33 @@
+<div class="right controls"><%= link_to "Back to Message list", customer_messages_path %></div>
+<div class="module">
+  <div class="module_header">
+    Title: <%= @customer_message.title %>
+  </div>
+  <div>
+    <table>
+      <tr>
+        <td class="post_author" rowspan="2">
+          <span class="name"><%= @customer_message.user.username %></span>
+          <span class="info smaller">
+            <p><strong><%= "Administrator" if @customer_message.user.admin? %></strong></p>
+            Posts <%= @customer_message.user.posts.size %><br />
+            Registered <%=l @customer_message.user.created_at, :format => :joined %><br />
+          </span>
+        </td>
+        <td class="post_header">
+          <span class="left post_date smaller">Posted <%=l @customer_message.created_at %></span>
+          <span class="right controls">
+            <%= link_to 'Edit', edit_customer_message_path(@customer_message) if can? :update, @customer_message %>
+            <%= link_to "Delete", @customer_message, :confirm => "Are you sure?", :method => :delete if can? :destroy, @customer_message %>
+          </span>
+        </td>
+      </tr>
+      <tr>
+        <td class="post_body">
+          <%= @customer_message.body.bbcode_to_html().html_safe %>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+<div class="right controls"><%= link_to "Back to Message list", customer_messages_path %></div>

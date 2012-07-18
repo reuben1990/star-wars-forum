@@ -1,7 +1,7 @@
 <div class="right controls"><%= link_to "Back to Forum", forum_path(@topic.forum) %></div>
 <div class="module">
   <div class="module_header">
-    <%= @topic.title %>
+    Title: <%= @topic.title %>
     <span class="right controls">
       <%= link_to "Edit", edit_topic_path(@topic) if can? :manage, @topic %>
       <%= link_to "Delete", @topic, :confirm => "Are you sure?", :method => :delete if can? :manage, @topic %>
@@ -15,7 +15,6 @@
       <tr>
         <td class="post_author" rowspan="2">
           <span class="name"><%= post.user.username %></span>
-          <span class="avatar"><%= image_tag post.user.gravatar_url %></span>
           <span class="info smaller">
             <p><strong><%= "Administrator" if post.user.admin? %></strong></p>
             Posts <%= post.user.posts.size %><br />
@@ -25,8 +24,8 @@
         <td class="post_header">
           <span class="left post_date smaller">Posted <%=l post.created_at %></span>
           <span class="right controls">
-            <%= link_to "Reply", new_topic_post_path(@topic) if can? :create, @topic.posts.new %>
-            <%= link_to "Quote", new_topic_post_path(@topic, :quote => post) if can? :create, @topic.posts.new %>
+            <%= link_to "Reply", new_topic_post_path(@topic) if can? :create, post%>
+            <%= link_to "Quote", new_topic_post_path(@topic, :quote => post) if can? :create, post %>
             <%= link_to "Edit", edit_post_path(post) if can? :update, post %>
             <%= link_to "Delete", post, :confirm => "Are you sure?", :method => :delete if can? :destroy, post %>
           </span>

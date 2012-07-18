@@ -1,0 +1,26 @@
+<div class="module">
+  <div class="module_header">
+    News
+    <span class="controls right">
+      <%= link_to 'New news', new_news_path if can? :create, News %>
+    </span>
+  </div>
+  <table>
+    <tr class="smaller">
+      <th colspan="2" align="left">News</th>
+      <th class="last_post" align="left">Created at</th>
+    </tr>
+    <% @news.each do |news| %>
+      <tr>
+        <td class="icon"><%= image_tag 'ruby.png' %></td>
+        <td class="description">
+          <%= link_to news.title, news if can? :read, news %> 
+          <span class="smaller"><br />by <%= news.user.username %></span>
+        </td>
+        <td class="last_post smaller">
+          <%=l news.created_at %><br />
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>

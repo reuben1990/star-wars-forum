@@ -1,0 +1,26 @@
+<div class="module">
+  <div class="module_header">
+    Message board
+    <span class="controls right">
+      <%= link_to 'New Customer message', new_customer_message_path if can? :create, CustomerMessage %>
+    </span>
+  </div>
+  <table>
+    <tr class="smaller">
+      <th colspan="2" align="left">Message</th>
+      <th class="last_post" align="left">Created at</th>
+    </tr>
+    <% @customer_messages.each do |customer_message| %>
+      <tr>
+        <td class="icon"><%= image_tag 'ruby.png' %></td>
+        <td class="description">
+          <%= link_to customer_message.title, customer_message if can? :read, customer_message %> 
+          <span class="smaller"><br />by <%= customer_message.user.username %></span>
+        </td>
+        <td class="last_post smaller">
+          <%=l customer_message.created_at %><br />
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>

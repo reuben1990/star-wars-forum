@@ -1,0 +1,33 @@
+<div class="right controls"><%= link_to "Back to news list", news_index_path %></div>
+<div class="module">
+  <div class="module_header">
+    Title: <%= @news.title %>
+  </div>
+  <div>
+    <table>
+      <tr>
+        <td class="post_author" rowspan="2">
+          <span class="name"><%= @news.user.username %></span>
+          <span class="info smaller">
+            <p><strong><%= "Administrator" if @news.user.admin? %></strong></p>
+            Posts <%= @news.user.posts.size %><br />
+            Registered <%=l @news.user.created_at, :format => :joined %><br />
+          </span>
+        </td>
+        <td class="post_header">
+          <span class="left post_date smaller">Posted <%=l @news.created_at %></span>
+          <span class="right controls">
+            <%= link_to 'Edit', edit_news_path(@news) if can? :update, @news %>
+            <%= link_to "Delete", @news, :confirm => "Are you sure?", :method => :delete if can? :destroy, @news %>
+          </span>
+        </td>
+      </tr>
+      <tr>
+        <td class="post_body">
+          <%= @news.body.bbcode_to_html().html_safe %>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+<div class="right controls"><%= link_to "Back to Message list", news_index_path %></div>

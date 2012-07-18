@@ -14,7 +14,9 @@ class User < ActiveRecord::Base
   
   has_many :topics, :dependent => :destroy
   has_many :posts, :dependent => :destroy
-  
+  has_many :customer_messages, :dependent => :destroy
+  has_many :news, :dependent => :destroy
+  has_many :messages
   def admin?
     true if self.username == 'admin'
   end

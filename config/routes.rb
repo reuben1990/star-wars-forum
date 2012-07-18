@@ -1,5 +1,13 @@
 Community::Application.routes.draw do
-  resources :categories, :except => [:index, :show]
+  resources :messages
+
+  resources :customer_messages
+
+  resources :categories, :except => :show
+ 
+  resources :news
+  
+  resources :games
   
   resources :forums, :except => :index do
     resources :topics, :shallow => true, :except => :index do
@@ -7,7 +15,7 @@ Community::Application.routes.draw do
     end
     root :to => 'categories#index', :via => :get
   end
-  
+
   devise_for :users
   root :to => 'categories#index', :via => :get
 

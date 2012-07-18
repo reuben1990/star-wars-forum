@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110808221332) do
+ActiveRecord::Schema.define(:version => 20120718130518) do
 
   create_table "categories", :force => true do |t|
     t.string   "title"
@@ -19,6 +20,16 @@ ActiveRecord::Schema.define(:version => 20110808221332) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "customer_messages", :force => true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "customer_messages", ["user_id"], :name => "index_customer_messages_on_user_id"
 
   create_table "forums", :force => true do |t|
     t.string   "title"
@@ -31,6 +42,25 @@ ActiveRecord::Schema.define(:version => 20110808221332) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "messages", :force => true do |t|
+    t.text     "body"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "messages", ["user_id"], :name => "index_messages_on_user_id"
+
+  create_table "news", :force => true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "news", ["user_id"], :name => "index_news_on_user_id"
 
   create_table "posts", :force => true do |t|
     t.text     "body"

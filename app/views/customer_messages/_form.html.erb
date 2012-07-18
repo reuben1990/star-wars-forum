@@ -1,0 +1,34 @@
+<%= form_for(@customer_message) do |f| %>
+  <% if @customer_message.errors.any? %>
+    <% flash.now[:error] = @customer_message.errors.full_messages.join(', and ') %>
+  <% end %>
+  <div class="module">
+    <div class="module_header"><%= action_name.humanize %> Message</div>
+      <div class="module_subheader smaller"></div>
+      <div class="module_body">
+        <div class="fieldset">
+          <span class="label indent smaller">
+            <%= f.label :title %><br />
+            <small>(Required)</small>
+          </span>
+          <span class="input indent smaller"><%= f.text_field :title, :size => 75 %></span>
+          <div class="clear"></div>
+        </div>
+        <div class="fieldset">
+          <span class="label indent smaller">
+            <%= f.label :body %><br />
+            <small>(Required)</small>
+          </span>
+          <span class="input indent smaller"><%= f.text_area :body, :cols => 60, :rows => 15 %></span>
+          <div class="clear"></div>
+        </div>
+      </div>
+      <div class="module_footer">
+        <div class="fieldset">
+          <span class="input"><%= f.submit "submit" %> or <%= link_to "cancel", @customer_message?  @customer_message : customer_messages_path %></span>
+          <div class="clear"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
