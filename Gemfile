@@ -8,7 +8,8 @@ gem 'cancan'
 gem 'gravtastic', :git => 'https://github.com/chrislloyd/gravtastic.git'
 gem 'bb-ruby'
 gem 'jquery-rails'
-gem 'nifty-generators'
+gem 'nifty-generators', :group => :development
+gem 'acts_as_api'
 
 group :development do
   gem 'hirb'
@@ -18,3 +19,5 @@ end
 group :production do
   gem 'unicorn'
 end
+
+gem "mocha", :group => :test

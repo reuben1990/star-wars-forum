@@ -1,7 +1,35 @@
-<ul id="chat">
-  <%= render @messages %>
-</ul>
-<%= form_for Message.new, :remote => true do |f| %>
-  <%= f.text_field :body %>
-  <%= f.submit "Send" %>
-<% end %>
+<script type="text/javascript">
+  window.setInterval('pull_msg()', 1000);
+  pull_msg();
+  function pull_msg () {
+    $.getJSON("/messages.json", function(data) {
+      $("#chat").find("li").remove(); 
+      var i;
+      for(i = 0; i < data.messages.length; ++ i) {
+        var li_tag;
+        if (i % 2 === 1) {
+          li_tag = "<li class='odd'>"
+        } else {
+          li_tag = "<li>" 
+        }
+        $("#chat").append(li_tag +  data.messages[i].user.username + "<br />" + data.messages[i].body + "  —" + data.messages[i].created_at + "</li>");
+      }
+    });
+  }
+</script>
+
+<div class="module">
+  <div class="module_header">
+    Chats
+  </div>
+  
+  <div id="footer"> 
+    <ul id="chat">
+    </ul>
+  </div>
+
+  <%= form_for Message.new, :remote => true do |f| %>
+    <%= f.text_field :body %>
+    <%= f.submit "send" %>
+  <% end %>
+</div>

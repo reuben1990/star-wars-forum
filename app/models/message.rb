@@ -1,12 +1,14 @@
 class Message < ActiveRecord::Base
+
   belongs_to :user
   
-  # Accessors
   attr_accessible :body
   
-  # Validations
-  validates :body,    :presence => true
-  
-  # Scopes
-  default_scope :order => 'updated_at ASC'
+  default_scope :order => 'updated_at DESC'
+  acts_as_api
+  api_accessible :public do |t|
+    t.add :body
+    t.add lambda {|message| (message.created_at + 8.hours).strftime("%H:%M:%S")}, :as => :created_at
+    t.add :user, :template => :public
+  end
 end

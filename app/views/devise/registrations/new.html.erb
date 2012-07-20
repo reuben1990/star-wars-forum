@@ -1,8 +1,9 @@
 <div class="module" style="padding:15px 25px 0px 25px;">
   <div style="float:left; width:50%; height:330px; padding-right:10px;">
-    <h1>Welcome to Forum Monster</h1>
-    <p>Forum Monster is a simple forum generator written in rails 3. The goal of Forum Monster, is to provide a simple, and easy to setup forum application without having to dictate how your site it setup.</p>
-    <p style="font-size:1.2em;"><strong>The email field is required, but none of the data is saved for more than a day. Feel free to put in a fake address.</strong></p>
+    <h1>Welcome to Star Wars forum</h1>
+    <p>Star Wars is an interesting space shooting games base on HTML5, it use the "cocos2d-html5" game engine and box2d physics engine, which are both the most powerful engine base on HTML5 and javascript.</p>
+    <p>Author: <%= link_to "Reuben Chao, Sun-yat-sen Univ.", "https://github.com/reuben1990" %></p>
+    <p style="font-size:1.2em;"><strong>Every email field is required</strong></p>
   </div>
   <div style="float:right; width:45%; padding-left:30px; border-left:1px solid #e2e2e2;">
     <%= form_for("user", :as => resource_name, :url => registration_path("user")) do |f| %>

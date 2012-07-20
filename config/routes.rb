@@ -1,6 +1,8 @@
 Community::Application.routes.draw do
   resources :messages
 
+  resources :stores
+
   resources :customer_messages
 
   resources :categories, :except => :show
