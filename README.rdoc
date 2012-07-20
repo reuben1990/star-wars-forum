@@ -1,42 +1,13 @@
-== Forum Monster Demo
-
-Demo for Forum Monster Forum Gem
-https://github.com/gitt/forum_monster
-
-Live demo available here
-http://forum-monster.heroku.com
-
-This demo is setup for you to play around with, and get an idea on how you can use Forum Monster. This demo includes a lot of extra functionality that doesn't come with Forum Monster by default.
-
-Gems Used in the demo are:
-
-bb-ruby ( bb-code ): https://github.com/cpjolicoeur/bb-ruby
-
-devise ( user authentication ): https://github.com/plataformatec/devise
-
-cancan ( user authorization ): https://github.com/ryanb/cancan
-
-gravtastic ( user avatars ): https://github.com/chrislloyd/gravtastic
-
 == Installation
 
 Just download, bundle, and run.
 
-    git clone git@github.com:gitt/forum_monster_demo.git
-    
-    cd forum_monster_demo
-    bundle install
-    
-    rake db:create
-    rake db:migrate
-    rake db:seed
-    
-    rails s
+git clone git@github.com:reuben1990/star-wars-forum.git
 
-2 Logins, 2 categories, and 5 forums are already setup for you to play with. You can create more as well
+cd star-wars-forum
 
-The admin login is admin/forum_admin
+bundle install
 
-The user login is user/forum_user
+rake db:migrate
 
-In addition to the 2 above users, you can use the registration process as normal.
+rails s
