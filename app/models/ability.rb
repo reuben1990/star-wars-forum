@@ -2,6 +2,9 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
+
+    alias_action :chat, :to=> :create
+
     user ||= User.new
     
     can :manage, :all if user.admin? 

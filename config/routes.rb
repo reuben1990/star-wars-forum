@@ -1,5 +1,9 @@
 Community::Application.routes.draw do
-  resources :messages
+  resources :messages do
+    collection do
+      get 'chat'
+    end
+  end
 
   resources :stores
 

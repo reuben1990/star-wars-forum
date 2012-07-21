@@ -1,0 +1,38 @@
+<script type="text/javascript">
+  window.setInterval('pull_msg()', 1000);
+  pull_msg();
+  function pull_msg () {
+    $.getJSON("/messages/chat.json", function(data) {
+      $("#chat").find("li").remove(); 
+      var i;
+      for(i = data.messages.length - 1; i >= 0; i --) {
+        var li_tag;
+        if (i % 2 === 1) {
+          li_tag = "<li class='odd'>"
+        } else {
+          li_tag = "<li>" 
+        }
+        $("#chat").append(li_tag +  "<strong>" + data.messages[i].user.username + "</strong>" + "<br />" + data.messages[i].body + "  —" + data.messages[i].created_at + "</li>");
+      }
+    });
+  }
+</script>
+
+<div class="module">
+  <div class="module_header">
+    Chats
+    <span class="right controls">
+      <%= link_to "Chat history", messages_path if can? :read, Message%>
+    </span>
+  </div>
+  
+  <div id="footer"> 
+    <ul id="chat">
+    </ul>
+  </div>
+
+  <%= form_for Message.new, :remote => true do |f| %>
+    <%= f.text_field :body %>
+    <%= f.submit "send" %>
+  <% end %>
+</div>

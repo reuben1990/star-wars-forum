@@ -1,35 +1,21 @@
-<script type="text/javascript">
-  window.setInterval('pull_msg()', 1000);
-  pull_msg();
-  function pull_msg () {
-    $.getJSON("/messages.json", function(data) {
-      $("#chat").find("li").remove(); 
-      var i;
-      for(i = 0; i < data.messages.length; ++ i) {
-        var li_tag;
-        if (i % 2 === 1) {
-          li_tag = "<li class='odd'>"
-        } else {
-          li_tag = "<li>" 
-        }
-        $("#chat").append(li_tag +  data.messages[i].user.username + "<br />" + data.messages[i].body + "  —" + data.messages[i].created_at + "</li>");
-      }
-    });
-  }
-</script>
-
 <div class="module">
   <div class="module_header">
-    Chats
+    Chat history
+    <span class="right controls">
+      <%= link_to "Chat box", chat_messages_path if can? :create, Message%>
+    </span>
   </div>
   
   <div id="footer"> 
     <ul id="chat">
+      <% @messages.each_with_index do |message, i| %>
+        <% li_class = i%2==0 ? "even" : "odd" %>
+        <li class=<%=li_class %>>
+          <strong><%=message.user.username %></strong> <br />
+          <%=message.body %> —<%=(message.created_at + 8.hours).strftime("%H:%M %D")%>
+        </li>
+      <% end %>
     </ul>
   </div>
-
-  <%= form_for Message.new, :remote => true do |f| %>
-    <%= f.text_field :body %>
-    <%= f.submit "send" %>
-  <% end %>
+  <%= will_paginate @messages %>  
 </div>

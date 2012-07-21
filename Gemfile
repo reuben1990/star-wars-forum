@@ -10,6 +10,7 @@ gem 'bb-ruby'
 gem 'jquery-rails'
 gem 'nifty-generators', :group => :development
 gem 'acts_as_api'
+gem 'will_paginate'
 
 group :development do
   gem 'hirb'
